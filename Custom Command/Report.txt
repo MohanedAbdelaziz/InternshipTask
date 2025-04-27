@@ -1,0 +1,31 @@
+1. How does the script handle arguments and options?
+
+- First, it uses getopts to parse the options -n, -v, and --help.
+
+- After parsing options, it uses shift to remove them from the arguments.
+
+- Then, it takes the next two arguments: the search string and the filename.
+
+- It checks if both are provided; if anything is missing, it shows an error and prints the help message.
+
+- If the file doesn’t exist, it prints an error and exits.
+
+- It builds a grep command dynamically based on the selected options.
+
+2. If I were to add support for regex or options like -i, -c, -l:
+
+- I would extend the option parsing to detect these additional flags.
+
+- Depending on the flags, I would adjust the grep command:
+
+- -c would make it print only the number of matching lines.
+
+- -l would make it print only the filename if it contains matches.
+
+- I would probably create a dynamic array of options and pass them all at once to grep at the end.
+
+3. What was the hardest part and why?
+
+- The hardest part was correctly handling the options parsing, especially when combining options like -vn or -nv.
+
+- Also, making sure the script validates all necessary inputs properly before executing the grep command to avoid runtime errors.
